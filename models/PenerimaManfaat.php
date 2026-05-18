@@ -14,8 +14,16 @@ class PenerimaManfaat
 
     public function getAll()
     {
-        $query = "SELECT *
-        FROM penerima_manfaat";
+
+    $query = "
+            SELECT
+                penerima_manfaat.*,
+                sekolah.nama_sekolah,
+                sekolah.jenjang
+            FROM penerima_manfaat
+            LEFT JOIN sekolah
+            ON penerima_manfaat.id_sekolah = sekolah.id_sekolah
+        ";
 
         $statement = $this->conn->prepare($query);
 

@@ -78,7 +78,7 @@
                                 <td>
                                     <div class="action-buttons">
 
-                                        <button class="btn-edit">
+                                        <button class="btn-edit" data-id="<?= $item['id_penerima'] ?>" data-id-sekolah="<?= $item['id_sekolah'] ?>" data-nama="<?= htmlspecialchars($item['nama']) ?>" data-nik="<?= htmlspecialchars($item['nik']) ?>" data-alamat="<?= htmlspecialchars($item['alamat']) ?>" data-status="<?= htmlspecialchars($item['status']) ?>">
                                             Edit
                                         </button>
 

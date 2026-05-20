@@ -1,23 +1,31 @@
 <?php
 
 require_once __DIR__ . "/../controllers/PenerimaManfaatController.php";
+require_once __DIR__ . "/../controllers/SekolahController.php";
 
-$controller = new PenerimaManfaatController();
+$penerimaController = new PenerimaManfaatController();
+$sekolahController = new SekolahController();
 
 $route = $_GET["route"] ?? "/";
 
 switch ($route) {
     case '/':
-        $controller->index();
+        $penerimaController->index();
         break;
     case '/create':
-        $controller->create();
+        $penerimaController->create();
+        break;
+    case '/store':
+        $penerimaController->store();
         break;
     case '/edit':
-        $controller->edit();
+        $penerimaController->edit();
         break;
     case '/delete':
-        $controller->destroy();
+        $penerimaController->destroy();
+        break;
+    case '/store-school':
+        $sekolahController->store();
         break;
     default:
         http_response_code(404);

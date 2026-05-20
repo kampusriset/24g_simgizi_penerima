@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../models/PenerimaManfaat.php";
+require_once __DIR__ . "/../models/Sekolah.php";
 
 class PenerimaManfaatController
 {
@@ -13,6 +14,8 @@ class PenerimaManfaatController
     public function index()
     {
         $data = $this->model->getAll();
+        $sekolahModel = new Sekolah();
+        $sekolah = $sekolahModel->getAll();
         require_once __DIR__ . "/../views/penerima.php";
     }
 

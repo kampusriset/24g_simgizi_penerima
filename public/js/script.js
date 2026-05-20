@@ -4,6 +4,8 @@ from "./modal.js";
 import { setupSchoolForm }
 from "./form-sekolah.js";
 
+import { setupEditModal } from "./penerima-edit.js";
+
 const penerimaModal =
     setupModal({
         modalId: "modal",
@@ -24,4 +26,39 @@ setupSchoolForm({
     formId: "schoolForm",
     selectId: "schoolSelect",
     modalController: sekolahModal
+});
+
+setupEditModal({
+    modalController: penerimaModal,
+});
+
+const openModal =
+    document.getElementById("openModal");
+
+const penerimaForm =
+    document.getElementById("penerimaForm");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+openModal.addEventListener("click", () => {
+
+    penerimaForm.reset();
+
+    document.getElementById(
+        "id_penerima"
+    ).value = "";
+
+    penerimaForm.action =
+        "index.php?route=/store";
+
+    modalTitle.textContent =
+        "Tambah Penerima Manfaat";
+
+    submitButton.textContent =
+        "Simpan";
+
 });

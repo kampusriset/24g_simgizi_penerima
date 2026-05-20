@@ -21,6 +21,9 @@ switch ($route) {
     case '/edit':
         $penerimaController->edit();
         break;
+    case '/update':
+        $penerimaController->update();
+        break;
     case '/delete':
         $penerimaController->destroy();
         break;

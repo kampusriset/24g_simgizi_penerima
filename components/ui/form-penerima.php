@@ -4,7 +4,7 @@
 
         <div class="modal-header">
 
-            <h3>Tambah Penerima Manfaat</h3>
+            <h3 id="modalTitle">Tambah Penerima Manfaat</h3>
 
             <button
                 type="button"
@@ -17,7 +17,12 @@
 
         </div>
 
-        <form action="index.php?route=/store" method="POST">
+        
+        <form id="penerimaForm" action="index.php?route=/store" method="POST">
+            <input
+                type="hidden"
+                name="id_penerima"
+                id="id_penerima" >
 
             <div class="form-group">
 
@@ -71,6 +76,7 @@
 
                 <input
                     type="text"
+                    id="nama"
                     name="nama"
                     placeholder="Masukkan nama"
                     required>
@@ -83,6 +89,7 @@
 
                 <input
                     type="text"
+                    id="nik"
                     name="nik"
                     placeholder="Masukkan NIK"
                     required>
@@ -94,6 +101,7 @@
                 <label>Alamat</label>
 
                 <textarea
+                    id="alamat"
                     name="alamat"
                     placeholder="Masukkan alamat"
                     required></textarea>
@@ -104,7 +112,7 @@
 
                 <label>Status</label>
 
-                <select name="status">
+                <select id="status" name="status">
 
                     <option value="aktif">
                         Aktif
@@ -131,7 +139,8 @@
 
                 <button
                     type="submit"
-                    class="btn-save">
+                    class="btn-save"
+                    id="submitButton">
 
                     Simpan
 

@@ -4,6 +4,8 @@ from "./modal.js";
 import { setupSchoolForm }
 from "./form-sekolah.js";
 
+import { setupDeleteModal } from "./delete-modal.js";
+
 import { setupEditModal } from "./penerima-edit.js";
 
 const penerimaModal =
@@ -22,6 +24,13 @@ const sekolahModal =
         cancelButtonId: "cancelSchoolModal"
     });
 
+const deleteModal =
+    setupModal({
+        modalId: "deleteModal",
+        closeButtonId: "cancelDelete",
+        cancelButtonId: "cancelDelete"
+    });
+
 setupSchoolForm({
     formId: "schoolForm",
     selectId: "schoolSelect",
@@ -30,6 +39,10 @@ setupSchoolForm({
 
 setupEditModal({
     modalController: penerimaModal,
+});
+
+setupDeleteModal({
+    modalController: deleteModal
 });
 
 const openModal =

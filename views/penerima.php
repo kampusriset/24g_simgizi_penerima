@@ -82,7 +82,8 @@
                                             Edit
                                         </button>
 
-                                        <button class="btn-delete">
+                                        <button class="btn-delete" data-id="<?= $item['id_penerima'] ?>" data-nama="<?= htmlspecialchars($item['nama']) ?>"
+                                        >
                                             Hapus
                                         </button>
 
@@ -110,6 +111,8 @@
     <?php require_once __DIR__ . '/../components/ui/form-penerima.php'; ?>
 
     <?php require_once __DIR__ . '/../components/ui/form-sekolah.php'; ?>
+
+    <?php require_once __DIR__ . '/../components/ui/delete-popup.php'; ?>
 
     <script type="module" src="public/js/script.js"></script>
 

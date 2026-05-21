@@ -1,34 +1,22 @@
-export function setupDeleteModal({
-    modalController
-}) {
+export function setupDeleteModal({ modalController }) {
+  const deleteButtons = document.querySelectorAll(".btn-delete");
+  const deleteForm = document.getElementById("deleteForm");
+  const deleteText = document.getElementById("deleteText");
 
-    const deleteButtons =
-        document.querySelectorAll(".btn-delete");
+  const deleteId = document.getElementById("deleteId");
 
-    const deleteForm =
-        document.getElementById("deleteForm");
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.id;
+      const nama = button.dataset.nama;
 
-    const deleteText =
-        document.getElementById("deleteText");
+      deleteText.textContent = `Apakah Anda yakin ingin menghapus ${nama}? Tindakan ini tidak dapat dibatalkan.`;
 
-    deleteButtons.forEach((button) => {
+      if (deleteId) {
+        deleteId.value = id;
+      }
 
-        button.addEventListener("click", () => {
-
-            const id =
-                button.dataset.id;
-
-            const nama =
-                button.dataset.nama;
-
-            deleteText.textContent =
-                `Apakah Anda yakin ingin menghapus ${nama}?`;
-
-            deleteId.value = id;
-
-            modalController.openModal();
-        });
-
+      modalController.openModal();
     });
-
+  });
 }

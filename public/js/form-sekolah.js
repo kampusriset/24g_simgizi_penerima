@@ -1,73 +1,44 @@
-export function setupSchoolForm({
-    formId,
-    selectId,
-    modalController
-}) {
+export function setupSchoolForm({ formId, selectId, modalController }) {
+  const form = document.getElementById(formId);
 
-    const form =
-        document.getElementById(formId);
+  const select = document.getElementById(selectId);
 
-    const select =
-        document.getElementById(selectId);
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    form?.addEventListener(
-        "submit",
-        async (e) => {
+    const formData = new FormData(form);
 
-            e.preventDefault();
+    const response = await fetch("index.php?route=/store-school", {
+      method: "POST",
+      body: formData,
+    });
 
-            const formData =
-                new FormData(form);
+    const result = await response.json();
 
-            const response = await fetch(
-                "index.php?route=/store-school",
-                {
-                    method: "POST",
-                    body: formData
-                }
-            );
+    if (result.success) {
+      const school = result.school;
 
-            const result =
-                await response.json();
+      const alreadyExists = [...select.options].some(
+        (option) => option.value == school.id_sekolah,
+      );
 
-            if (result.success) {
+      if (!alreadyExists) {
+        const option = document.createElement("option");
 
-                const school =
-                    result.school;
+        option.value = school.id_sekolah;
 
-                const alreadyExists =
-                    [...select.options].some(
-                        option =>
-                            option.value ==
-                            school.id_sekolah
-                    );
+        option.text = `${school.nama_sekolah} - ${school.jenjang}`;
 
-                if (!alreadyExists) {
+        option.selected = true;
 
-                    const option =
-                        document.createElement(
-                            "option"
-                        );
+        select.appendChild(option);
+      }
 
-                    option.value =
-                        school.id_sekolah;
+      select.value = school.id_sekolah;
 
-                    option.text =
-                        `${school.nama_sekolah} - ${school.jenjang}`;
+      form.reset();
 
-                    option.selected = true;
-
-                    select.appendChild(option);
-                }
-
-                select.value =
-                    school.id_sekolah;
-
-                form.reset();
-
-                modalController.closeModal();
-            }
-
-        }
-    );
+      modalController.closeModal();
+    }
+  });
 }

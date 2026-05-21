@@ -1,56 +1,53 @@
 export function setupModal({
-    modalId,
-    openButtonId,
-    closeButtonId,
-    cancelButtonId
+  modalId,
+  openButtonId,
+  closeButtonId,
+  cancelButtonId,
 }) {
+  const modal = document.getElementById(modalId);
+  const openButton = document.getElementById(openButtonId);
+  const closeButton = document.getElementById(closeButtonId);
+  const cancelButton = document.getElementById(cancelButtonId);
 
-    const modal =
-        document.getElementById(modalId);
+  const openModal = () => {
+    if (modal) {
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
 
-    const openButton =
-        document.getElementById(openButtonId);
+      document.body.style.overflow = "hidden";
+    }
+  };
 
-    const closeButton =
-        document.getElementById(closeButtonId);
+  const closeModal = () => {
+    if (modal) {
+      modal.classList.remove("flex");
+      modal.classList.add("hidden");
 
-    const cancelButton =
-        document.getElementById(cancelButtonId);
+      document.body.style.overflow = "";
+    }
+  };
 
-    const openModal = () => {
-        modal.classList.add("active");
-    };
+  if (openButton) {
+    openButton.addEventListener("click", openModal);
+  }
 
-    const closeModal = () => {
-        modal.classList.remove("active");
-    };
+  if (closeButton) {
+    closeButton.addEventListener("click", closeModal);
+  }
 
-    openButton?.addEventListener(
-        "click",
-        openModal
-    );
+  if (cancelButton) {
+    cancelButton.addEventListener("click", closeModal);
+  }
 
-    closeButton?.addEventListener(
-        "click",
-        closeModal
-    );
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
 
-    cancelButton?.addEventListener(
-        "click",
-        closeModal
-    );
-
-    window.addEventListener("click", (e) => {
-
-        if (e.target === modal) {
-            closeModal();
-        }
-
-    });
-
-    return {
-        openModal,
-        closeModal,
-        modal
-    };
+  return {
+    openModal,
+    closeModal,
+    modal,
+  };
 }

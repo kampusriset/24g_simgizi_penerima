@@ -1,3 +1,9 @@
+<?php
+
+require_once __DIR__ . '/../../helpers/UserHelper.php';
+
+?>
+
 <div id="sidebarBackdrop" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-20 hidden md:hidden transition-opacity" onclick="toggleSidebar()"></div>
 
 <aside id="sidebar" class="bg-slate-900 text-slate-300 w-64 flex-shrink-0 fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out z-30 flex flex-col shadow-2xl md:shadow-none border-r border-slate-800">
@@ -49,7 +55,7 @@
     <div class="p-4 border-t border-slate-800 bg-slate-950/30">
         <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold text-sm">
-                AD
+                <?= UserHelper::getInitials($_SESSION['user']['nama']) ?>
             </div>
             <div class="text-sm">
                 <p class="text-white font-medium"><?= $_SESSION['user']['nama'] ?></p>

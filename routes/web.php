@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/../controllers/PenerimaManfaatController.php";
 require_once __DIR__ . "/../controllers/SekolahController.php";
+require_once __DIR__ . "/../controllers/AuthController.php";
 
 $penerimaController = new PenerimaManfaatController();
 $sekolahController = new SekolahController();
@@ -11,6 +12,7 @@ $route = $_GET["route"] ?? "/";
 
 switch ($route) {
     case '/':
+        require_once __DIR__ . '/../middleware/auth.php';
         $penerimaController->index();
         break;
     case '/create':

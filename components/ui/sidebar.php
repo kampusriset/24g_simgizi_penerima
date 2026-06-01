@@ -52,8 +52,8 @@
                 AD
             </div>
             <div class="text-sm">
-                <p class="text-white font-medium">Administrator</p>
-                <p class="text-slate-500 text-xs">admin@simgizi.id</p>
+                <p class="text-white font-medium"><?= $_SESSION['user']['nama'] ?></p>
+                <p class="text-slate-500 text-xs"><?= $_SESSION['user']['role'] ?></p>
             </div>
         </div>
     </div>

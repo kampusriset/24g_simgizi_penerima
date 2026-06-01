@@ -1,65 +1,33 @@
-export function setupEditModal({
-    modalController
-}) {
+export function setupEditModal({ modalController }) {
+  const editButtons = document.querySelectorAll(".btn-edit");
 
-    const editButtons =
-        document.querySelectorAll(".btn-edit");
+  const penerimaForm = document.getElementById("penerimaForm");
 
-    const penerimaForm =
-        document.getElementById("penerimaForm");
+  const modalTitle = document.getElementById("modalTitle");
 
-    const modalTitle =
-        document.getElementById("modalTitle");
+  const submitButton = document.getElementById("submitButton");
 
-    const submitButton =
-        document.getElementById("submitButton");
+  editButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      document.getElementById("id_penerima").value = button.dataset.id;
 
-    editButtons.forEach((button) => {
+      document.getElementById("schoolSelect").value = button.dataset.idSekolah;
 
-        button.addEventListener("click", () => {
+      document.getElementById("nama").value = button.dataset.nama;
 
-            document.getElementById(
-                "id_penerima"
-            ).value =
-                button.dataset.id;
+      document.getElementById("nik").value = button.dataset.nik;
 
-            document.getElementById(
-                "schoolSelect"
-            ).value =
-                button.dataset.idSekolah;
+      document.getElementById("alamat").value = button.dataset.alamat;
 
-            document.getElementById(
-                "nama"
-            ).value =
-                button.dataset.nama;
+      document.getElementById("status").value = button.dataset.status;
 
-            document.getElementById(
-                "nik"
-            ).value =
-                button.dataset.nik;
+      penerimaForm.action = "index.php?route=/update";
 
-            document.getElementById(
-                "alamat"
-            ).value =
-                button.dataset.alamat;
+      modalTitle.textContent = "Edit Penerima Manfaat";
 
-            document.getElementById(
-                "status"
-            ).value =
-                button.dataset.status;
+      submitButton.textContent = "Update";
 
-            penerimaForm.action =
-                "index.php?route=/update";
-
-            modalTitle.textContent =
-                "Edit Penerima Manfaat";
-
-            submitButton.textContent =
-                "Update";
-
-            modalController.openModal();
-        });
-
+      modalController.openModal();
     });
-
+  });
 }

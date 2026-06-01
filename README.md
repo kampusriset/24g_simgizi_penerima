@@ -11,18 +11,32 @@ Project ini dibuat sebagai kelengkapan tugas tengah semester genap mata kuliah P
 ## 📁 Folder Architecture
 
 ```bash
-└── 24g_simgizi_penerima/
+└── penerima-manfaat/
+    ├── components/
+    │   └── ui/
+    │       ├── delete-popup.php
+    │       ├── form-penerima.php
+    │       ├── form-sekolah.php
+    │       ├── header.php
+    │       └── sidebar.php
     ├── config/
     │   └── database.php
     ├── controllers/
-    │   └── PenerimaManfaatController.php
+    │   ├── PenerimaManfaatController.php
+    │   └── SekolahController.php
     ├── models/
-    │   └── PenerimaManfaat.php
+    │   ├── PenerimaManfaat.php
+    │   └── Sekolah.php
+    ├── public/
+    │   └── js/
+    │       ├── delete-modal.js
+    │       ├── form-sekolah.js
+    │       ├── modal.js
+    │       ├── penerima-edit.js
+    │       └── script.js
     ├── routes/
     │   └── web.php
     ├── views/
-    │   ├── form.create.penerima.php
-    │   ├── form.edit.penerima.php
     │   └── penerima.php
     ├── .gitignore
     ├── index.php

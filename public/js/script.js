@@ -1,64 +1,61 @@
-import { setupModal }
-from "./modal.js";
+import { setupModal } from "./modal.js";
 
-import { setupSchoolForm }
-from "./form-sekolah.js";
+import { setupSchoolForm } from "./form-sekolah.js";
+
+import { setupDeleteModal } from "./delete-modal.js";
 
 import { setupEditModal } from "./penerima-edit.js";
 
-const penerimaModal =
-    setupModal({
-        modalId: "modal",
-        openButtonId: "openModal",
-        closeButtonId: "closeModal",
-        cancelButtonId: "cancelModal"
-    });
+const penerimaModal = setupModal({
+  modalId: "modal",
+  openButtonId: "openModal",
+  closeButtonId: "closeModal",
+  cancelButtonId: "cancelModal",
+});
 
-const sekolahModal =
-    setupModal({
-        modalId: "schoolModal",
-        openButtonId: "openSchoolModal",
-        closeButtonId: "closeSchoolModal",
-        cancelButtonId: "cancelSchoolModal"
-    });
+const sekolahModal = setupModal({
+  modalId: "schoolModal",
+  openButtonId: "openSchoolModal",
+  closeButtonId: "closeSchoolModal",
+  cancelButtonId: "cancelSchoolModal",
+});
+
+const deleteModal = setupModal({
+  modalId: "deleteModal",
+  closeButtonId: "cancelDelete",
+  cancelButtonId: "cancelDelete",
+});
 
 setupSchoolForm({
-    formId: "schoolForm",
-    selectId: "schoolSelect",
-    modalController: sekolahModal
+  formId: "schoolForm",
+  selectId: "schoolSelect",
+  modalController: sekolahModal,
 });
 
 setupEditModal({
-    modalController: penerimaModal,
+  modalController: penerimaModal,
 });
 
-const openModal =
-    document.getElementById("openModal");
+setupDeleteModal({
+  modalController: deleteModal,
+});
 
-const penerimaForm =
-    document.getElementById("penerimaForm");
+const openModal = document.getElementById("openModal");
 
-const modalTitle =
-    document.getElementById("modalTitle");
+const penerimaForm = document.getElementById("penerimaForm");
 
-const submitButton =
-    document.getElementById("submitButton");
+const modalTitle = document.getElementById("modalTitle");
+
+const submitButton = document.getElementById("submitButton");
 
 openModal.addEventListener("click", () => {
+  penerimaForm.reset();
 
-    penerimaForm.reset();
+  document.getElementById("id_penerima").value = "";
 
-    document.getElementById(
-        "id_penerima"
-    ).value = "";
+  penerimaForm.action = "index.php?route=/store";
 
-    penerimaForm.action =
-        "index.php?route=/store";
+  modalTitle.textContent = "Tambah Penerima Manfaat";
 
-    modalTitle.textContent =
-        "Tambah Penerima Manfaat";
-
-    submitButton.textContent =
-        "Simpan";
-
+  submitButton.textContent = "Simpan";
 });

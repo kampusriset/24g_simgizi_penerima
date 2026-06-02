@@ -16,7 +16,7 @@ class SekolahController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $nama_sekolah =
-                $_POST['nama_sekolah'] ?? '';
+                strtoupper($_POST['nama_sekolah'] ?? '');
 
             $alamat =
                 $_POST['alamat_sekolah'] ?? '';

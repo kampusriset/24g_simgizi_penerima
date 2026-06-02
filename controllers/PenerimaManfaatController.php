@@ -28,7 +28,7 @@ class PenerimaManfaatController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_sekolah = !empty($_POST['id_sekolah']) ? (int)$_POST['id_sekolah'] : 0;
-            $nama       = $_POST['nama'] ?? '';
+            $nama       = strtoupper($_POST['nama']) ?? '';
             $nik        = $_POST['nik'] ?? '';
             $alamat     = $_POST['alamat'] ?? '';
             $status     = $_POST['status'] ?? 'aktif';
@@ -65,7 +65,7 @@ class PenerimaManfaatController
             $id_penerima = !empty($_POST['id_penerima']) ? (int)$_POST['id_penerima'] : 0;
 
             $id_sekolah  = !empty($_POST['id_sekolah']) ? (int)$_POST['id_sekolah'] : 0;
-            $nama        = $_POST['nama'] ?? '';
+            $nama        = strtoupper($_POST['nama']) ?? '';
             $nik         = $_POST['nik'] ?? '';
             $alamat      = $_POST['alamat'] ?? '';
             $status      = $_POST['status'] ?? 'aktif';

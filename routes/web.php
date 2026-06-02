@@ -6,7 +6,7 @@ require_once __DIR__ . "/../controllers/AuthController.php";
 
 $penerimaController = new PenerimaManfaatController();
 $sekolahController = new SekolahController();
-$authController= new AuthController();
+$authController = new AuthController();
 
 $route = $_GET["route"] ?? "/";
 
@@ -43,14 +43,14 @@ switch ($route) {
 
     case '/process-register':
         $authController->processRegister();
-        break;  
-    
+        break;
+
     case '/process-login':
         $authController->processLogin();
         break;
-    
+
     case '/logout':
-       $authController->logout();
+        $authController->logout();
         break;
     default:
         http_response_code(404);
